@@ -1,3 +1,2 @@
 #!/bin/bash
 readlink -f you_are_here2
-pwd >>you_are_here
