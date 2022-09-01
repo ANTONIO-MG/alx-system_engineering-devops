@@ -1,0 +1,2 @@
+#!/bin/bash
+mv -nt [:upper]* /tmp/u
