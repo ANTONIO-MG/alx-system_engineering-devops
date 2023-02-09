@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script prints out a string a given number of times
+cycles=0
+while [ $cycles -lt 10 ] 
+do
+	cycles=$(( $cycles + 1))
+	if [ $cycles -eq 4 ]
+	then
+		echo "bad luck"
+	elif [ $cycles -eq 8 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+done
