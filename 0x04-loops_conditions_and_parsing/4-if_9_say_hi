@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This script prints out a string a given number of times
+cycles=0
+while [ $cycles -lt 10 ] 
+do
+	echo "Best School"
+	cycles=$(( $cycles + 1))
+	if [ $cycles -eq 9 ]
+	then
+		echo "Hi"
+	fi
+done
