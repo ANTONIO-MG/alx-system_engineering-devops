@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# prints a clock by minutes and hours for 12 hours
+minutes=1
+hours=0
+while [ $hours -le 12 ]
+do
+	echo "Hour: $hours"
+	while [ $minutes -le 59 ]
+	do 
+		echo "$minutes"
+		minutes=$(( $minutes + 1 ))
+	done
+	minutes=1
+	hours=$(( $hours + 1 ))
+done
