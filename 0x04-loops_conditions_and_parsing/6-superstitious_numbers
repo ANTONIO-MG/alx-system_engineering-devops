@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script prints out a string a given number of times
+cycles=0
+while [ $cycles -lt 20 ] 
+do
+	cycles=$(( $cycles + 1))
+	echo "$cycles"
+	if [ $cycles -eq 4 ]
+	then 
+		echo "bad luck from China"
+	elif [ $cycles -eq 9 ]
+	then
+		echo "bad luck from Japan"
+	elif [ $cycles -eq 17 ]
+	then 
+		echo "bad luck from Italy"
+	fi
+done
