@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script prints out a string a given number of times
+
+list="$ls"
+echo "$list"
