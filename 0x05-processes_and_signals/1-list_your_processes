@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 #script that shows all the processes in user mode and also shows the hierarchy
-
 ps -aux
