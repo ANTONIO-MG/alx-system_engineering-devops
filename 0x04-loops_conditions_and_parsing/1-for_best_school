@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # This script prints out a string a given number of times
 
-for print in {1..10};
+for i in {1..10};
 do
-	echo "Best School"
+    echo $"Best School"
+    export i
 done
