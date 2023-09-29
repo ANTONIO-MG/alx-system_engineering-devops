@@ -2,4 +2,4 @@
 # script that shows all the processes in user mode and 
 # also shows the hierarchy
 
-ps -aux
+ps aux --sort=user
