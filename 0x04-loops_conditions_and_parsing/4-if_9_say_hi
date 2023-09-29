@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-# This script prints out a string a given number of times
-cycles=0
-while [ $cycles -lt 10 ] 
-do
-	echo "Best School"
-	cycles=$(( $cycles + 1))
-	if [ $cycles -eq 9 ]
-	then
-		echo "Hi"
-	fi
+# a script that brints a give string a number of times
+#and at iteration 9 prints a different string
+
+i=0
+
+while [ $i -le 9 ];
+do 
+    if [ $i -eq 9 ]
+    then
+        echo "Hi"
+    fi
+    echo $"Best School"
+    (( i ++))
 done
