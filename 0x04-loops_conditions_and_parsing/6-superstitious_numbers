@@ -2,7 +2,7 @@
 # a script that brints a give string a number of times
 # and at iteration 4, 9 and 17 prints a different string using case
 
-i=0
+i=1
 
 while [ $i -le 20 ];
 do
