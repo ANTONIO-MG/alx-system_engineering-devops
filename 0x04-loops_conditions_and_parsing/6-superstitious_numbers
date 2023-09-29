@@ -2,26 +2,21 @@
 # a script that brints a give string a number of times
 # and at iteration 4, 9 and 17 prints a different string using case
 
-i=1
+i=0
 
 while [ $i -le 20 ];
 do
-    if [ $i -eq 4 ] || [ $i -eq 9 ] || [ $i -eq 17 ]
-    then 
-        case $i in
-            4)
-                echo "bad luck from China"
-                ;;
-
-            9)
-                echo "bad luck from Japan"
-                ;;
-            17)
-                echo "bad luck from Italy"
-                ;;
-        esac
-    else
-        echo "$i"
-    fi
+    echo "$i"
+    case $i in
+        4)
+            echo "bad luck from China"
+            ;;
+        9)
+            echo "bad luck from Japan"
+            ;;
+        17)
+            echo "bad luck from Italy"
+            ;;
+    esac
     (( i ++))
 done
