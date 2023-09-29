@@ -1,18 +1,27 @@
 #!/usr/bin/env bash
-# This script prints out a string a given number of times
-cycles=0
-while [ $cycles -lt 20 ] 
+# a script that brints a give string a number of times
+# and at iteration 4, 9 and 17 prints a different string using case
+
+i=1
+
+while [ $i -le 20 ];
 do
-	cycles=$(( $cycles + 1))
-	echo "$cycles"
-	if [ $cycles -eq 4 ]
-	then 
-		echo "bad luck from China"
-	elif [ $cycles -eq 9 ]
-	then
-		echo "bad luck from Japan"
-	elif [ $cycles -eq 17 ]
-	then 
-		echo "bad luck from Italy"
-	fi
+    if [ $i -eq 4 ] || [ $i -eq 9 ] || [ $i -eq 17 ]
+    then 
+        case $i in
+            4)
+                echo "bad luck from China"
+                ;;
+
+            9)
+                echo "bad luck from Japan"
+                ;;
+            17)
+                echo "bad luck from Italy"
+                ;;
+        esac
+    else
+        echo "$i"
+    fi
+    (( i ++))
 done
