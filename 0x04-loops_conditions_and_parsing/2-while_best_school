@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# This script prints out a string a given number of times
-cycles=0
-while [ $cycles -lt 10 ] 
-do
-	echo "Best School"
-	cycles=$(( $cycles + 1 ))
+# a script that brints a give string a number of times
+
+i=0
+
+while [ $i -le 10 ];
+do 
+    echo $"Best School"
+    (( i ++))
 done
