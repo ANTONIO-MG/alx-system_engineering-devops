@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# a cript that prits it's own PID and the bash process name
+
+command1=$pgrep bash
