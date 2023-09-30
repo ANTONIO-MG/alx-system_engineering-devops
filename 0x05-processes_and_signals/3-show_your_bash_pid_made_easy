@@ -6,7 +6,7 @@ pids=$(pgrep bash)
 # Loop through each PID and display the PID and process name
 for pid in $pids;
 do
-    process_name=$(ps -p $pid -o comm=)
+    process_name=$(ps -p "$pid" -o comm=)
     echo "$pid $process_name"
 done
 
