@@ -1,4 +1,4 @@
-#!/usr/bin/evn bash
+#!/usr/bin/env bash
 # Bash script that pings an IP address passed as an argument.
 
 var=$1
