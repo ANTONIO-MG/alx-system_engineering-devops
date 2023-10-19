@@ -1,16 +1,32 @@
 #!/usr/bin/env bash
 # Configures an Ubuntu server with specific IP addresses for `localhost` and `facebook.com`
 
-# Copy the original file to a temporary location
 sudo cp /etc/hosts /tmp/temp_file
 
-# Modify the temporary file as needed
-sudo sed -i.bak 's/^127.*localhost$/127.0.0.2 localhost/' /tmp/temp_file
-sudo sed -i 's/^127\.0\.0\.1 facebook.com$/8.8.8.8 facebook.com/' /tmp/temp_file
+# Check if the copy was successful
+if [ $? -eq 0 ]; then
+    # Modify the temporary file as needed
+    sudo sed -i.bak 's/^127.*localhost$/127.0.0.2 localhost/' /tmp/temp_file
+    sudo sed -i 's/^127\.0\.0\.1 facebook.com$/8.8.8.8 facebook.com/' /tmp/temp_file
 
-# Force copy the modified file back to the original location
-sudo cp -f /tmp/temp_file /etc/hosts
+    # Check if the modifications were successful
+    if [ $? -eq 0 ]; then
+        # Force copy the modified file back to the original location
+        sudo cp -f /tmp/temp_file /etc/hosts
 
-# Clean up the temporary file
-sudo rm /tmp/temp_file /tmp/temp_file.bak
+        # Check if the copy back was successful
+        if [ $? -eq 0 ]; then
+            echo "Hosts file modified successfully."
+        else
+            echo "Error: Failed to copy modified file back to /etc/hosts."
+        fi
+    else
+        echo "Error: Failed to modify the temporary file."
+    fi
+
+    # Clean up the temporary files
+    sudo rm /tmp/temp_file /tmp/temp_file.bak
+else
+    echo "Error: Failed to copy /etc/hosts to temporary location."
+fi
 
