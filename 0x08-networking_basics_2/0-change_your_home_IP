@@ -4,7 +4,7 @@
 sudo cp /etc/hosts /tmp/temp_file
 
 # Modify the temporary file as needed
-sudo sed -i.bak 's/^127.*localhost$/127.0.0.2 localhost/' /tmp/temp_file
+sudo sed -i.bak 's/^(\d{1,3}\.){3}\d{1,3} localhost$/127.0.0.2 localhost/' /tmp/temp_file
 if grep -q '^127\.0\.0\.1 facebook.com$' /tmp/temp_file; then
     # Modify the line if it's present
     sudo sed -i.bak 's/^(\d{1,3}\.){3}\d{1,3} facebook.com$/8.8.8.8 facebook.com/' /tmp/temp_file
