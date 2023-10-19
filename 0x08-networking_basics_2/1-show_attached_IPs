@@ -1,14 +1,4 @@
 #!/usr/bin/env bash
 # Display all active IPv4 IPs on the machine it's executed on.
 
-interfaces=$(ifconfig -s | awk '{print $1}' | tail -n +2)
-
-# Loop through each interface and display its IPv4 address
-for interface in $interfaces; do
-    ipv4_address=$(ifconfig $interface | grep 'inet ' | awk '{print $2}')
-    
-    # Check if the interface has an IPv4 address
-    if [ ! -z "$ipv4_address" ]; then
-        echo "Interface $interface: $ipv4_address"
-    fi
-done
+ifconfig | grep "inet addr" | cut -d':' -f2 | cut -d' ' -f1
