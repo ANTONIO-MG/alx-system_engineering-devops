@@ -1,11 +1,11 @@
 # Install flask vi pip3  using Puppet
 
-exec { 'install pip3':
-  command => '/usr/bin/apt-get install -y python3-pip'
+exec { 'install pip':
+  command => '/usr/bin/apt-get install pip'
 }
 
 exec { 'install Flask':
-  command => '/usr/bin/pip install Flask'
+  command => '/usr/bin/pip3 install flask'
 }
 
 package { 'pip':
@@ -15,6 +15,6 @@ package { 'pip':
 
 package { 'Flask':
   ensure  => 'installed',
-  before  => Exec['install Flask'],
+  before  => Exec['install flask'],
   require => Package['pip']
 }
