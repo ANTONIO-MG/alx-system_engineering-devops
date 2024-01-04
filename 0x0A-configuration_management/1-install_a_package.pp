@@ -5,7 +5,7 @@ exec { 'install pip3':
 }
 
 exec { 'install flask':
-  command => '/usr/bin/gem install puppet-lint -v 2.1.1'
+  command => '/usr/bin/gem install flask -v 2.1.1'
 }
 
 package { 'pip':
