@@ -4,8 +4,8 @@ exec { 'install pip3':
   command => '/usr/bin/apt-get install -y python3-pip'
 }
 
-exec { 'install flask':
-  command => '/usr/bin/gem install flask -v 2.1.1'
+exec { 'install Flask':
+  command => '/usr/bin/gem install Flask -v 2.1.1'
 }
 
 package { 'pip':
@@ -13,8 +13,8 @@ package { 'pip':
   before => Exec['install pip']
 }
 
-package { 'flask':
+package { 'Flask':
   ensure  => 'installed',
-  before  => Exec['install flask'],
+  before  => Exec['install Flask'],
   require => Package['pip']
 }
