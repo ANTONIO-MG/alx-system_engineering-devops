@@ -5,7 +5,7 @@ exec { 'install pip3':
 }
 
 exec { 'install Flask':
-  command => '/usr/bin/gem install Flask -v 2.1.1'
+  command => '/usr/bin/pip install Flask'
 }
 
 package { 'pip':
