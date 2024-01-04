@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # connects to the 118120-web-01 server using SSh
-ssh ubuntu@52.86.164.16
+ssh -i ~/.ssh/school ubuntu@52.86.164.16
