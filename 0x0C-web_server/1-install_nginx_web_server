@@ -7,7 +7,6 @@
 
 apt-get update
 apt-get install nginx
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
-chown -R www-data:www-data /var/www/html
-systemctl start nginx
+ufw allow 'Nginx full'
+sudo echo "Hello World!" > /var/www/html/index.html
+nginx -s reload
