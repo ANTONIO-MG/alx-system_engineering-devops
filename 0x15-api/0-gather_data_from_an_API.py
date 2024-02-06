@@ -29,8 +29,7 @@ if __name__ == "__main__":
     comp = len(completed_tasks)
     out_of = len(tasks)
 
-    print(f"Employee {users['name']} is done with tasks({comp}/{out_of}):",
-          end="\n\t ")
+    print(f"Employee {users['name']} is done with tasks({comp}/{out_of}):")
     for task in completed_tasks:
         if task['completed'] is True:
-            print(task['title'], end="\n\t ")
+            print(f"\t {task['title']}")
