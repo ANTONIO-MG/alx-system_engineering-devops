@@ -24,9 +24,9 @@ if __name__ == "__main__":
 
     tasks = response1.json()
     users = response2.json()
-   
-    fields = ["USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"]
-    
+
+    fields = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
+
     with open("USER_ID.csv", 'w', newline='') as file:
         csv_writer = csv.DictWriter(file, fieldnames=fields)
 
@@ -41,4 +41,3 @@ if __name__ == "__main__":
                 "TASK_COMPLETED_STATUS": task['completed'],
                 "TASK_TITLE": task['title']
             })
-    
