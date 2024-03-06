@@ -2,6 +2,7 @@
 """
 Script for fetching data from API for given employee ID,
 information about his/ TODO list progress.
+script exports data in the JSON format.
 """
 import csv
 import json
@@ -12,7 +13,7 @@ if __name__ == "__main__":
     """
     fetches the user data and the TODO list for the given user ID.
     Store the user ID and surname with the tasks and their status
-    Save all of that information on a CSV file
+    export data in the JSON format.
     """
 
     users_url = f"https://jsonplaceholder.typicode.com/users/{argv[1]}"
