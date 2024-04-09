@@ -2,7 +2,7 @@
 """ a script that queries the Reddit API and returns
 the number of subscribers  for a given subreddit """
 
-import praw
+import requests
 from sys import argv
 
 
@@ -10,16 +10,19 @@ def get_subreddit_subscribers(subreddit_name):
     """ a function that queries the Reddit API and returns
     the number of subscribers  for a given subreddit."""
 
-    reddit = praw.Reddit(client_id='Sd8ya0rJ_esCfWq2aKIxEg',
-                         client_secret='favSH52deAviKnTIhzck0JdUUNnu8A',
-                         user_agent='testing 123')
+    url = f"https://www.reddit.com/r/{subreddit_name}/about.json"
 
-    subreddit = reddit.subreddit(subreddit_name)
-    subscribers_count = subreddit.subscribers
+    try:
+        response = requests.get(url)
+        data = response.json()
 
-    if subscribers_count != 0:
-        return subscribers_count
-    else:
+        if 'data' in data and 'subscribers' in data['data']:
+            return data['data']['subscribers']
+        else:
+            return 0
+
+    except Exception as e:
+        print("something went wrong:", e)
         return 0
 
 
