@@ -2,8 +2,8 @@
 """ a script that queries the Reddit API and returns
 the number of subscribers  for a given subreddit """
 
-import requests
 from sys import argv
+import requests
 
 
 def get_subreddit_subscribers(subreddit_name):
