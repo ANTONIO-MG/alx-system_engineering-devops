@@ -3,7 +3,6 @@
 the number of subscribers  for a given subreddit """
 
 import requests
-from sys import argv
 
 
 def get_subreddit_subscribers(subreddit_name):
