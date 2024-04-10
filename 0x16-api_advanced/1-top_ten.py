@@ -2,28 +2,30 @@
 """  a script that queries the Reddit API and prints the titles of the first
 10 hot posts listed for a given subreddit. """
 
-import praw
+import requests
 from sys import argv
 
 def top_ten(subreddit):
     """  a function that queries the Reddit API and prints the titles of the first
     10 hot posts listed for a given subreddit. """
+
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
     
-    reddit = praw.Reddit(client_id='Sd8ya0rJ_esCfWq2aKIxEg',
-                         client_secret='favSH52deAviKnTIhzck0JdUUNnu8A',
-                         user_agent='testing 123')
+    user_agent = {'User-Agent': "Python/requests"}
     
     try:
-        # check if the subreddit exits and return the number of subscribers
-        subreddit_obj = reddit.subreddit(subreddit)
-        print(subreddit)
+        response = requests.get(url, headers=user_agent,
+                                allow_redirects=False)
+        titles = response.json()['data']['children']
         
-        for submission in subreddit_obj.hot(limit=10):
-            print(submission.title)
-    except:
-        # else if it does not exist return 0
-        print("None")
-
+        if response.status_code != 200:
+            return None
+        else:
+            for  title in titles:
+                print(title['data']['title'])
+            
+    except Exception as e:
+        print("None:", e)
 
 if  __name__ == "__main__":
     """

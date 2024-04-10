@@ -2,40 +2,46 @@
 """ A recursive Script that queries the Reddit API and returns
 a list containing the titles of all hot articles for a given subreddit """
 
-import praw
+import requests
 from sys import argv
 
-count = 0
 
-def recurse(subreddit_name, count=0, hot_list=None):
-    """A recursive function that queries the Reddit API and returns a list containing
-    the titles of all hot articles for a given subreddit."""
+def recurse(subreddit, hot_list=None, after=None):
+    """A recursive function that queries the Reddit API and returns a list
+    containing the titles of all hot articles for a given subreddit."""
     
-    # Initialize hot_list if not provided
     if hot_list is None:
         hot_list = []
 
-    reddit = praw.Reddit(client_id='Sd8ya0rJ_esCfWq2aKIxEg',
-                         client_secret='favSH52deAviKnTIhzck0JdUUNnu8A',
-                         user_agent='testing 123')
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=100"
     
+    user_agent = {'User-Agent': "Python/requests"}
+
     try:
-        # Check if the subreddit exists
-        subreddit = reddit.subreddit(subreddit_name)
-        
-        for submission in subreddit.hot():
-            count += 1
-    except:
-        # If the subreddit does not exist, return 0 and an empty list
-        print("Subreddit '{}' not found or private.".format(subreddit_name))
-        return count
-    
-    # Recursive call to fetch more titles if needed
-    return recurse(subreddit_name, count=count, hot_list=hot_list)
+        params = {'after': after} if after else {}
+        response = requests.get(url, headers=user_agent,
+                                params=params, allow_redirects=False)
+        data = response.json()
+
+        if 'data' in data and 'children' in data['data']:
+            for post in data['data']['children']:
+                hot_list.append(post['data']['title'])
+
+            after = data['data']['after']
+            if after:  # If there are more posts, recursively call the function with the 'after' parameter
+                return recurse(subreddit, hot_list, after)
+            else:
+                return hot_list
+        else:
+            return None
+
+    except Exception as e:
+        print("None:", e)
+        return None
 
 
 if  __name__ == "__main__":
         """
         if module is executed  as a script, then print out the number of
         """
-        print(recurse("programming"))
+        recurse(argv[1])
