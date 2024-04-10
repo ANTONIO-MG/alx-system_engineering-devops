@@ -25,7 +25,6 @@ def get_subreddit_subscribers(subreddit_name):
         print("something went wrong:", e)
         return 0
 
-
 if __name__ == "__main__":
     """
     if module is executed  as a script, then print out the number of
