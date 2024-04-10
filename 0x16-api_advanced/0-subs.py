@@ -13,17 +13,13 @@ def number_of_subscribers(subreddit):
 
     user_agent = {'User-Agent': 'Python/requests'}
 
-    try:
-        response = requests.get(url, headers=user_agent,
-                                allow_redirects=False)
+    response = requests.get(url, headers=user_agent,
+                            allow_redirects=False)
 
-        if response.status_code in [302, 404]:
-            return 0
-        else:
-            return response.json().get('data').get('subscribers')
+    if response.status_code in [302, 404]:
+        return 0
 
-    except Exception as e:
-        print("something went wrong:", e)
+    return response.json().get('data').get('subscribers')
 
 
 if __name__ == "__main__":
