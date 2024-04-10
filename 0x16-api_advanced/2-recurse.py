@@ -9,12 +9,12 @@ from sys import argv
 def recurse(subreddit, hot_list=None, after=None):
     """A recursive function that queries the Reddit API and returns a list
     containing the titles of all hot articles for a given subreddit."""
-    
+
     if hot_list is None:
         hot_list = []
 
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=100"
-    
+
     user_agent = {'User-Agent': "Python/requests"}
 
     try:
@@ -28,7 +28,7 @@ def recurse(subreddit, hot_list=None, after=None):
                 hot_list.append(post['data']['title'])
 
             after = data['data']['after']
-            if after:  # If there are more posts, recursively call the function with the 'after' parameter
+            if after:  # recursively call the function with the 'after'
                 return recurse(subreddit, hot_list, after)
             else:
                 return hot_list
@@ -40,8 +40,9 @@ def recurse(subreddit, hot_list=None, after=None):
         return None
 
 
-if  __name__ == "__main__":
-        """
-        if module is executed  as a script, then print out the number of
-        """
-        recurse(argv[1])
+if __name__ == "__main__":
+    """
+    if module is executed  as a script, then print out the number of
+    """
+
+    recurse(argv[1])

@@ -10,8 +10,7 @@ def number_of_subscribers(subreddit):
     the number of subscribers  for a given subreddit."""
 
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    
-    # Set an User-Agent
+
     user_agent = {'User-Agent': 'Python/requests'}
 
     try:
@@ -26,8 +25,10 @@ def number_of_subscribers(subreddit):
     except Exception as e:
         print("something went wrong:", e)
 
+
 if __name__ == "__main__":
+    """ if module is executed  as a script,
+    then print out the number of
     """
-    if module is executed  as a script, then print out the number of
-    """
+
     number_of_subscribers()
