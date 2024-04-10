@@ -6,7 +6,7 @@ import requests
 from sys import argv
 
 
-def get_subreddit_subscribers(subreddit_name):
+def number_of_subscribers(subreddit_name):
     """ a function that queries the Reddit API and returns
     the number of subscribers  for a given subreddit."""
 
@@ -29,4 +29,4 @@ if __name__ == "__main__":
     """
     if module is executed  as a script, then print out the number of
     """
-    get_subreddit_subscribers(argv[1])
+    number_of_subscribers(argv[1])
