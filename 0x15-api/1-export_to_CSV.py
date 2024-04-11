@@ -34,8 +34,8 @@ if __name__ == "__main__":
         # write the rows
         for task in tasks:
             csv_writer.writerow({
-                "USER_ID": users['id'],
-                "USERNAME": users['username'],
-                "TASK_COMPLETED_STATUS": task['completed'],
-                "TASK_TITLE": task['title']
+                "USER_ID": '"' + str(users['id']) + '"',
+                "USERNAME": '"' + str(users['username']) + '"',
+                "TASK_COMPLETED_STATUS": '"' + str(task['completed']) + '"',
+                "TASK_TITLE": '"' + str(task['title']) + '"'
             })
